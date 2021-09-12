@@ -1,0 +1,85 @@
+.search-container {
+    height: 100%;
+    padding: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+
+    .ant-input-clear-icon {
+        font-size: 18px !important;
+    }
+
+    .mess-container {
+        display: grid;
+        grid-gap: 20px;
+
+        .mess-item {
+            display: flex;
+
+            // 修改 按钮高度 和 输入框高度
+            .ant-input-affix-wrapper {
+                height: 50px;
+            }
+
+            button {
+                width: 60px;
+                height: 50px;
+                background: #fff;
+                border-color: #d9d9d9;
+                box-shadow: none;
+
+                &:hover {
+                    border-color: #1890ff;
+                }
+            }
+        }
+    }
+
+    .engine-container {
+        flex-grow: 1;
+
+        display: grid;
+        grid-column-gap: 30px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 50%);
+
+
+        .engine-item {
+            display: flex;
+            flex-direction: column;
+
+            // 修改 按钮高度 和 输入框高度
+            .ant-input-affix-wrapper {
+                height: 55px;
+            }
+
+            button {
+                width: 140px;
+                height: 55px;
+            }
+
+            &:nth-child(1) {
+                align-self: center;
+            }
+
+            &:nth-child(2) {
+                align-self: center;
+            }
+
+            .logo {
+                align-self: center;
+                height: 90px;
+                margin-bottom: 30px;
+                border-radius: 6px;
+                transition: .3s;
+
+                &:hover {
+                    cursor: pointer;
+                    box-shadow: 0px 0px 10px 0px #c2c2c2;
+                }
+            }
+        }
+    }
+}
