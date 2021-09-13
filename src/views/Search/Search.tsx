@@ -38,12 +38,6 @@ function Search() {
     const [messList, setMessList] = useState(msl)
     const [engineList, setEngineList] = useState(egl)
 
-    useEffect(() => {
-        setTimeout(() => {
-            message.success('欢迎甜甜')
-        }, 2000)
-    }, [])
-
     const messItemOnChange = (v: string, idx: number) => {
         const nv = messList.map((x, index) => idx === index ? ({ ...x, value: v }) : x)
         setMessList(nv)
@@ -54,8 +48,8 @@ function Search() {
         setEngineList(nv)
     }
 
-    const messSearch = (value: string, idx: number, evt: Event) => {
-        if ((evt.target as HTMLElement).nodeName === 'INPUT') return  // 清空输入框时不跳转
+    const messSearch = (value: string, idx: number, evt: any) => {
+        if (['path', 'svg'].includes(evt.nativeEvent.target.nodeName)) return  // 清空输入框时不跳转
         const { link, home } = messList[idx]
         const url = value ? link + value : home
         openUrl(url)
@@ -80,7 +74,7 @@ function Search() {
         localStorage.cacheSort = JSON.stringify(nv.map(x => x.id))
     }
 
-    const handleOnContextMenu = (evt: MouseEvent, item: UEngineItem | UMessItem, idx: number, type: 'mess' | 'engine') => {
+    const handleOnContextMenu = (evt: any, item: UEngineItem | UMessItem, idx: number, type: 'mess' | 'engine') => {
         evt.preventDefault()
         showContextMenu(
             evt,

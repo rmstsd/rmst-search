@@ -15,6 +15,11 @@ const resolveRoot = pathStr => path.resolve(__dirname + '/../', pathStr)
 
 module.exports = {
     entry: './src/index.js',
+    output: {
+        filename: 'lei.js',
+        path: resolveRoot('dist'),
+        assetModuleFilename: 'images/[name][ext]'
+    },
     mode: 'production',
     // devtool: 'source-map',
     optimization: {
