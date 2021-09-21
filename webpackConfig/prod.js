@@ -20,11 +20,11 @@ module.exports = {
         path: resolveRoot('dist'),
         assetModuleFilename: 'images/[name][ext]'
     },
-    mode: 'production',
+    mode: 'development',
     devServer: {
         port: 9000
     },
-    // devtool: 'source-map',
+    devtool: 'source-map',
     // optimization: {
     //     usedExports: true,
     //     minimizer: [
