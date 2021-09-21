@@ -6,7 +6,7 @@
     "license": "MIT",
     "scripts": {
         "dev": "webpack-dev-server --config ./webpackConfig/dev.js",
-        "build": "webpack --config ./webpackConfig/prod.js"
+        "build": "webpack --config ./webpackConfig/dev.js"
     },
     "dependencies": {
         "@ant-design/icons": "^4.6.4",
