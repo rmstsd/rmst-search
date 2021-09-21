@@ -30,13 +30,6 @@ export const messList: UMessItem[] = [
         value: ''
     },
     {
-        id: 'github',
-        mark: 'GitHub',
-        link: 'https://github.com/search?q=',
-        home: 'https://github.com/',
-        value: ''
-    },
-    {
         id: 'npm',
         mark: 'npm',
         link: 'https://www.npmjs.com/search?q=',

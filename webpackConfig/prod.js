@@ -21,13 +21,16 @@ module.exports = {
         assetModuleFilename: 'images/[name][ext]'
     },
     mode: 'production',
-    // devtool: 'source-map',
-    optimization: {
-        usedExports: true,
-        minimizer: [
-            new CssMinimizerPlugin(),
-        ]
+    devServer: {
+        port: 9000
     },
+    // devtool: 'source-map',
+    // optimization: {
+    //     usedExports: true,
+    //     minimizer: [
+    //         new CssMinimizerPlugin(),
+    //     ]
+    // },
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
         alias: {
@@ -36,16 +39,21 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({ template: './public/index.html' }),
-        // new CopyPlugin({
-        //     patterns: [
-        //         {
-        //             from: resolveRoot('public'),
-        //             globOptions: {
-        //                 ignore: [resolveRoot('public/index.html')]
-        //             }
-        //         }
-        //     ]
-        // }),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: 'public',
+                    globOptions: {
+                        ignore: ["**/index.html"] // '**/index.html' 会忽略public下且包括子目录下的index.html 件
+                    },
+
+                    // 根据指定路径判断是否忽略改文件;
+                    // filter: resourcePath => {
+                    //     return resourcePath.split('/').pop() !== 'index.html'
+                    // }
+                }
+            ]
+        }),
         new MiniCssExtractPlugin({ filename: "lei.css" }),
 
         new BundleAnalyzerPlugin({ openAnalyzer: false, reportFilename: 'report.html', openAnalyzer: true })

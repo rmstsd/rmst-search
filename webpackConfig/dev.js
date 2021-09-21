@@ -2,6 +2,7 @@
  * @type {import('webpack').Configuration}
 */
 
+
 const path = require('path')
 
 const htmlWebpackPlugin = require('html-webpack-plugin')
@@ -17,7 +18,8 @@ module.exports = {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
-        port
+        port,
+        https: true,
     },
     stats: 'errors-warnings',
     resolve: {

@@ -1,6 +1,6 @@
 
-import React, { useEffect, useState } from "react";
-import { Input, message } from "antd";
+import React, { PointerEvent, useEffect, useState } from "react";
+import { Input, Button, message } from "antd";
 import Icon from '@ant-design/icons';
 
 import { messList as msl, engineList as defaultEgl, UEngineItem, UMessItem } from "./constant";
@@ -12,6 +12,9 @@ import baiduLogo from "./image/baidu-logo.png";
 import bingLogo from "./image/bing-logo.png";
 import developLogo from "./image/develop-logo.png";
 import googleLogo from "./image/google-logo.png";
+
+import geekBang from "./image/geek-bang.png";
+import webpack from "./image/webpack.png";
 
 import './Search.less'
 
@@ -29,6 +32,17 @@ const Logo_Map = new Map([
     ['bing', bingLogo],
     ['develop', developLogo]
 ])
+
+const concise = [
+    {
+        logo: geekBang,
+        link: 'https://time.geekbang.org/dashboard/course'
+    },
+    {
+        logo: webpack,
+        link: 'https://webpack.docschina.org/concepts/'
+    }
+]
 
 const cacheSort: string = localStorage.cacheSort
 const egl: UEngineItem[] = cacheSort ? JSON.parse(cacheSort).map((x: any) => defaultEgl.find(y => y.id === x)) : defaultEgl
@@ -49,7 +63,8 @@ function Search() {
     }
 
     const messSearch = (value: string, idx: number, evt: any) => {
-        if (['path', 'svg'].includes(evt.nativeEvent.target.nodeName)) return  // 清空输入框时不跳转
+        const path: HTMLElement[] = evt.nativeEvent.path
+        if (path.some(x => x.className === 'ant-input-suffix')) return // 清空输入框时不跳转
         const { link, home } = messList[idx]
         const url = value ? link + value : home
         openUrl(url)
@@ -101,7 +116,7 @@ function Search() {
     return (
         <div className="search-container">
             <section className="mess-container"
-                style={{ gridTemplateColumns: `repeat(${messList.length}, 1fr)` }}
+                style={{ gridTemplateColumns: `repeat(${messList.length + 1}, 1fr)` }}
             >
                 {messList.map((item, idx) =>
                     <div className="mess-item" key={idx}
@@ -120,6 +135,15 @@ function Search() {
                         />
                     </div>
                 )}
+                <div className="mess-item">
+                    {concise.map(x =>
+                        <Button key={x.link} onClick={() => openUrl(x.link)}>
+                            <img src={x.logo} style={{ height: 30, verticalAlign: 'initial' }} />
+                        </Button>
+                    )}
+
+                </div>
+
             </section>
 
             <section className="engine-container">
