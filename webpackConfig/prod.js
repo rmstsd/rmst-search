@@ -20,17 +20,7 @@ module.exports = {
         path: resolveRoot('dist'),
         assetModuleFilename: 'images/[name][ext]'
     },
-    mode: 'development',
-    devServer: {
-        port: 9000
-    },
-    devtool: 'source-map',
-    // optimization: {
-    //     usedExports: true,
-    //     minimizer: [
-    //         new CssMinimizerPlugin(),
-    //     ]
-    // },
+    mode: 'production',
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
         alias: {
@@ -54,9 +44,9 @@ module.exports = {
                 }
             ]
         }),
-        new MiniCssExtractPlugin({ filename: "lei.css" }),
+        new MiniCssExtractPlugin({ filename: 'lei.[contenthash].css' }),
 
-        new BundleAnalyzerPlugin({ openAnalyzer: false, reportFilename: 'report.html', openAnalyzer: true })
+        new BundleAnalyzerPlugin({ openAnalyzer: false })
     ],
     module: {
         rules: [
