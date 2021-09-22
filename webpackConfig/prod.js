@@ -19,8 +19,8 @@ module.exports = function (webpackEnv) {
         entry: './src/index.js',
         output: {
             filename: 'js/[name].[contenthash:8].js',
-            path: resolveRoot('dist'),
             assetModuleFilename: 'images/[name][ext]',
+            path: resolveRoot('dist'),
             clean: true
         },
         optimization: {
@@ -81,7 +81,7 @@ module.exports = function (webpackEnv) {
             // https://twitter.com/wSokra/status/969679223278505985
             // https://github.com/facebook/create-react-app/issues/5358
             runtimeChunk: {
-                name: entrypoint => `runtime-${entrypoint.name}`,
+                name: entryPoint => `runtime-${entryPoint.name}`,
             },
         },
         mode: 'production',

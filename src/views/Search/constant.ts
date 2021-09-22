@@ -1,4 +1,13 @@
 
+import geekBang from "./image/geek-bang.png";
+import webpack from "./image/webpack.png";
+import ts from "./image/ts.png";
+
+import baiduLogo from "./image/baidu-logo.png";
+import bingLogo from "./image/bing-logo.png";
+import developLogo from "./image/develop-logo.png";
+import googleLogo from "./image/google-logo.png";
+
 export interface UMessItem {
     id: string,
     mark: string,
@@ -38,6 +47,21 @@ export const messList: UMessItem[] = [
     }
 ]
 
+export const concise = [
+    {
+        logo: geekBang,
+        link: 'https://time.geekbang.org/dashboard/course'
+    },
+    {
+        logo: webpack,
+        link: 'https://webpack.docschina.org/concepts/'
+    },
+    {
+        logo: ts,
+        link: 'https://www.typescriptlang.org/docs/handbook/intro.html'
+    }
+]
+
 export interface UEngineItem {
     id: string,
     logo: string,
@@ -51,7 +75,7 @@ export interface UEngineItem {
 export const engineList: UEngineItem[] = [
     {
         id: 'baidu',
-        logo: './image/baidu-logo.png',
+        logo: baiduLogo,
         mark: '百度',
         link: 'https://www.baidu.com/s?wd=',
         suggest: 'https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=34534,34496,31254,34004,34092,34517,26350,34319&req=2&bs=fetch&csor=5&cb=baiduCb&wd=',
@@ -60,7 +84,7 @@ export const engineList: UEngineItem[] = [
     },
     {
         id: 'google',
-        logo: './image/google-logo.png',
+        logo: googleLogo,
         mark: '谷歌',
         link: 'https://www.google.com.hk/search?safe=strict&hl=zh-CN&q=',
         suggest: 'https://www.google.com.hk/complete/search?q=%E6%9D%8E&cp=1&client=gws-wiz&xssi=t&hl=zh-CN&authuser=0&pq=%E6%9D%8E%E7%99%BD&psi=HbkwYf7PIYm2mAW3-YCwDg.1630583069240&dpr=1.4322917461395264',
@@ -68,14 +92,14 @@ export const engineList: UEngineItem[] = [
     },
     {
         id: 'bing',
-        logo: './image/bing-logo.png',
+        logo: bingLogo,
         mark: '必应',
         link: 'https://www.bing.com/search?q=',
         value: ''
     },
     {
         id: 'develop',
-        logo: './image/develop-logo.png',
+        logo: developLogo,
         mark: '开发者',
         link: 'https://kaifa.baidu.com/searchPage?value=',
         value: ''

@@ -1,20 +1,12 @@
 
-import React, { PointerEvent, useEffect, useState } from "react";
-import { Input, Button, message } from "antd";
+import React, { useState } from "react";
+import { Input, Button } from "antd";
 import Icon from '@ant-design/icons';
 
-import { messList as msl, engineList as defaultEgl, UEngineItem, UMessItem } from "./constant";
+import { messList as msl, engineList as defaultEgl, UEngineItem, UMessItem, concise } from "./constant";
 import { ajaxJSONP, copy, openUrl } from "@/utils/utils";
 
 import { showContextMenu } from "@/components/ContextMenu"
-
-import baiduLogo from "./image/baidu-logo.png";
-import bingLogo from "./image/bing-logo.png";
-import developLogo from "./image/develop-logo.png";
-import googleLogo from "./image/google-logo.png";
-
-import geekBang from "./image/geek-bang.png";
-import webpack from "./image/webpack.png";
 
 import './Search.less'
 
@@ -26,23 +18,6 @@ const Icon_Map = new Map([
     ['npm', <svg viewBox="0 0 2303 1024"><path d="M767.586 128.207v767.586H0V128.207h767.586z m-639.38 127.38v512h255.587V383.792H512v383.793h128.207v-512h-512z" p-id="11549" fill="#CB3837"></path><path d="M1406.966 128.207v767.586H1151.38V1024h-512V128.207h767.586z m-639.38 127.38v639.38h255.587v-127.38h255.586v-512H767.586z m255.587 128.206h128.207V639.38h-128.207V383.793z" p-id="11550" fill="#CB3837"></path><path d="M1278.76 894.966v-766.76h1023.172v767.587H1278.76z m128.206-639.38v512h255.587V383.793h128.206v383.793h128.207V383.793h128.207v383.793h128.207v-512h-768.414z" p-id="11551" fill="#CB3837"></path></svg>]
 ])
 
-const Logo_Map = new Map([
-    ['google', googleLogo],
-    ['baidu', baiduLogo],
-    ['bing', bingLogo],
-    ['develop', developLogo]
-])
-
-const concise = [
-    {
-        logo: geekBang,
-        link: 'https://time.geekbang.org/dashboard/course'
-    },
-    {
-        logo: webpack,
-        link: 'https://webpack.docschina.org/concepts/'
-    }
-]
 
 const cacheSort: string = localStorage.cacheSort
 const egl: UEngineItem[] = cacheSort ? JSON.parse(cacheSort).map((x: any) => defaultEgl.find(y => y.id === x)) : defaultEgl
@@ -138,18 +113,16 @@ function Search() {
                 <div className="mess-item">
                     {concise.map(x =>
                         <Button key={x.link} onClick={() => openUrl(x.link)}>
-                            <img src={x.logo} style={{ height: 30, verticalAlign: 'initial' }} />
+                            <img src={x.logo} style={{ height: 30, verticalAlign: 'middle' }} />
                         </Button>
                     )}
-
                 </div>
-
             </section>
 
             <section className="engine-container">
                 {engineList.map((item, idx) =>
                     <div className="engine-item" key={idx}>
-                        <img className="logo" src={Logo_Map.get(item.id)} draggable
+                        <img className="logo" src={item.logo} draggable
                             onDragOver={evt => evt.preventDefault()}
                             onDragStart={() => onDragstart(idx)}
                             onDrop={() => onDrop(idx)}
@@ -171,8 +144,6 @@ function Search() {
                     </div>
                 )}
             </section>
-
-            {/* {menuJsx} */}
         </div>
     )
 }
