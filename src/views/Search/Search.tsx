@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Input, Button } from "antd";
+import { Input, Button, Avatar } from "antd";
 import Icon from '@ant-design/icons';
 
 import { messList as msl, engineList as defaultEgl, UEngineItem, UMessItem, concise } from "./constant";
@@ -12,6 +12,7 @@ import './Search.less'
 
 const context = require.context('./avatar', false)
 const imageArray: string[] = context.keys().map((path: string) => context(path).default)
+
 
 const Icon_Map = new Map([
     ['zhihu', <svg viewBox="0 0 1024 1024"><path d="M 940.35 795.875 c 0 78.652 -63.771 142.422 -142.421 142.422 H 228.226 c -78.655 0 -142.427 -63.772 -142.427 -142.422 v -569.7 c 0 -78.658 63.772 -142.432 142.427 -142.432 H 797.93 c 78.658 0 142.432 63.772 142.432 142.431 l -0.01 569.701 Z M 415.621 543.356 h 125.593 c 0 -29.528 -13.923 -46.824 -13.923 -46.824 H 418.295 c 2.59 -53.493 4.91 -122.15 5.739 -147.65 h 103.677 s -0.561 -43.871 -12.091 -43.871 H 333.378 s 10.971 -57.374 25.594 -82.7 c 0 0 -54.417 -2.938 -72.98 69.622 c -18.562 72.56 -46.404 116.43 -49.356 124.446 c -2.953 8.013 16.031 3.795 24.044 0 c 8.015 -3.797 44.294 -16.876 54.84 -67.496 h 56.35 c 0.76 32.082 2.99 130.397 2.287 147.649 H 258.15 c -16.45 11.81 -21.936 46.824 -21.936 46.824 h 132.592 c -5.53 36.615 -15.239 83.813 -28.817 108.835 c -21.513 39.655 -32.904 75.934 -110.525 138.368 c 0 0 -12.657 9.28 26.576 5.906 c 39.231 -3.372 76.356 -13.498 102.087 -64.963 c 13.378 -26.756 27.213 -60.697 38.006 -95.121 l -0.04 0.12 l 109.26 125.795 s 14.343 -33.747 3.798 -70.87 l -80.994 -90.698 l -27.42 20.279 l -0.031 0.099 c 7.615 -26.7 13.092 -53.095 14.795 -76.061 c 0.042 -0.553 0.084 -1.119 0.121 -1.689 Z M 567.366 295.73 v 435.35 h 45.77 l 18.753 52.405 l 79.328 -52.405 h 99.978 V 295.73 H 567.366 Z M 764.09 684.253 h -51.968 l -64.817 42.817 l -15.319 -42.817 H 615.81 v -339.94 h 148.28 v 339.94 Z m 0 0" fill="#1b61de"></path></svg>],
@@ -28,6 +29,7 @@ function Search() {
 
     const [messList, setMessList] = useState(msl)
     const [engineList, setEngineList] = useState(egl)
+    const [avatarIdx, setAvatarIdx] = useState(Number(localStorage.avatarIdx) || 0)
 
     const messItemOnChange = (v: string, idx: number) => {
         const nv = messList.map((x, index) => idx === index ? ({ ...x, value: v }) : x)
@@ -89,6 +91,17 @@ function Search() {
         )
     }
 
+    const togglePrev = () => {
+        const nv = Math.max(0, avatarIdx - 1)
+        setAvatarIdx(nv)
+        localStorage.avatarIdx = nv
+    }
+    const toggleNext = () => {
+        const nv = Math.min(imageArray.length - 1, avatarIdx + 1)
+        setAvatarIdx(nv)
+        localStorage.avatarIdx = nv
+    }
+
     return (
         <div className="search-container">
             <section className="mess-container"
@@ -145,10 +158,12 @@ function Search() {
                     </div>
                 )}
 
-                <div className="cube-container">
-                    {imageArray.slice(0, 5).map(item =>
-                        <img src={item} key={item} className="image-item" />
-                    )}
+                <div className="cool-container">
+                    <Button.Group className="toggle-btn">
+                        <Button onClick={togglePrev}>上一个</Button>
+                        <Button onClick={toggleNext}>下一个</Button>
+                    </Button.Group>
+                    <img className="avatar" src={imageArray[avatarIdx]} />
                 </div>
             </section>
         </div>
