@@ -8,7 +8,7 @@ import bingLogo from "./image/bing-logo.png";
 import developLogo from "./image/develop-logo.png";
 import googleLogo from "./image/google-logo.png";
 
-export interface UMessItem {
+export type UMessItem = {
     id: string,
     mark: string,
     link: string,
@@ -48,18 +48,9 @@ export const messList: UMessItem[] = [
 ]
 
 export const concise = [
-    {
-        logo: geekBang,
-        link: 'https://time.geekbang.org/dashboard/course'
-    },
-    {
-        logo: webpack,
-        link: 'https://webpack.docschina.org/concepts/'
-    },
-    {
-        logo: ts,
-        link: 'https://www.typescriptlang.org/docs/handbook/intro.html'
-    }
+    { logo: geekBang, link: 'https://time.geekbang.org/dashboard/course' },
+    { logo: webpack, link: 'https://webpack.docschina.org/concepts/' },
+    { logo: ts, link: 'https://www.typescriptlang.org/docs/handbook/intro.html' }
 ]
 
 export interface UEngineItem {
@@ -90,18 +81,18 @@ export const engineList: UEngineItem[] = [
         suggest: 'https://www.google.com.hk/complete/search?q=%E6%9D%8E&cp=1&client=gws-wiz&xssi=t&hl=zh-CN&authuser=0&pq=%E6%9D%8E%E7%99%BD&psi=HbkwYf7PIYm2mAW3-YCwDg.1630583069240&dpr=1.4322917461395264',
         value: ''
     },
-    {
-        id: 'bing',
-        logo: bingLogo,
-        mark: '必应',
-        link: 'https://www.bing.com/search?q=',
-        value: ''
-    },
+    // {
+    //     id: 'bing',
+    //     logo: bingLogo,
+    //     mark: '必应',
+    //     link: 'https://www.bing.com/search?q=',
+    //     value: ''
+    // },
     {
         id: 'develop',
         logo: developLogo,
         mark: '开发者',
-        link: 'https://kaifa.baidu.com/searchPage?value=',
+        link: 'https://kaifa.baidu.com/searchPage?wd=',
         value: ''
     }
 ]
