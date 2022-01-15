@@ -16,6 +16,7 @@
         grid-gap: 20px;
 
         .mess-item {
+            position: relative;
             display: flex;
 
             // 修改 按钮高度 和 输入框高度
@@ -33,6 +34,18 @@
                 &:hover {
                     border-color: #1890ff;
                 }
+            }
+
+            .paste-s {
+                position: absolute;
+                right: 1px;
+                bottom: 0;
+                z-index: 20;
+                padding: 0;
+                width: 20px;
+                height: 20px;
+                line-height: 0.8;
+                color: #646464;
             }
         }
     }

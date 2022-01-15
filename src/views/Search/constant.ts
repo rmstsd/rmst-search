@@ -44,7 +44,15 @@ export const messList: UMessItem[] = [
         link: 'https://www.npmjs.com/search?q=',
         home: 'https://www.npmjs.com/',
         value: ''
-    }
+    },
+    {
+        id: 'mdn',
+        mark: 'mdn',
+        link: 'https://developer.mozilla.org/zh-CN/search?q=',
+        home: '',
+        value: ''
+    },
+
 ]
 
 export const concise = [
