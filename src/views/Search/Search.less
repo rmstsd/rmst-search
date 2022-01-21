@@ -112,19 +112,36 @@
                 }
             }
 
-            .avatar {
-                display: inline-block;
+            .avatar-container {
+                overflow: hidden;
+                border-radius: 50%;
                 width: 230px;
                 height: 230px;
-                border-radius: 50%;
-                object-fit: cover;
                 border: 1px solid #dddddd;
-
                 animation-name: spin;
                 animation-duration: 10s;
                 animation-timing-function: linear;
                 animation-iteration-count: infinite;
+
+                .avatar {
+                    display: inline-block;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+
+                    animation-name: scale;
+                    animation-duration: 2s;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                    animation-fill-mode: forwards;
+                    animation-direction: alternate;
+
+                    &:hover {
+                        animation-duration: .2s;
+                    }
+                }
             }
+
         }
     }
 }
@@ -136,5 +153,15 @@
 
     to {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes scale {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.5);
     }
 }

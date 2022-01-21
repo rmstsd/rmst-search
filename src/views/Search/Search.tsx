@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Input, Button, Avatar } from "antd";
 import Icon from '@ant-design/icons';
 
@@ -170,7 +170,9 @@ function Search() {
                         <Button onClick={togglePrev}>上一个</Button>
                         <Button onClick={toggleNext}>下一个</Button>
                     </Button.Group>
-                    <img className="avatar" src={imageArray[avatarIdx]} />
+                    <div className="avatar-container">
+                        <img className="avatar" src={imageArray[avatarIdx]} />
+                    </div>
                 </div>
             </section>
         </div>
