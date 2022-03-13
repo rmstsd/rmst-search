@@ -110,9 +110,7 @@ function Search() {
 
     return (
         <div className="search-container">
-            <section className="mess-container"
-                style={{ gridTemplateColumns: `repeat(${messList.length}, 1fr)` }}
-            >
+            <section className="mess-container">
                 {messList.map((item, idx) =>
                     <div className="mess-item" key={idx}
                         onContextMenu={evt => handleOnContextMenu(evt, item, idx, 'mess')}

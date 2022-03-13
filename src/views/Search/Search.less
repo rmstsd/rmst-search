@@ -1,7 +1,7 @@
 .search-container {
     height: 100%;
-    padding: 20px;
-    overflow: hidden;
+    padding: 35px;
+    overflow: auto;
     box-sizing: border-box;
 
     display: flex;
@@ -13,7 +13,12 @@
 
     .mess-container {
         display: grid;
-        grid-gap: 20px;
+        grid-gap: 25px;
+        grid-template-columns: repeat(5, 1fr);
+
+        @media (max-width: 750px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
 
         .mess-item {
             position: relative;
@@ -54,9 +59,14 @@
         flex-grow: 1;
 
         display: grid;
-        grid-column-gap: 30px;
+        grid-column-gap: 40px;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 50%);
+
+        @media (max-width: 750px) {
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+        }
 
         .engine-item {
             display: flex;
@@ -99,6 +109,7 @@
             justify-content: space-evenly;
 
             position: relative;
+            overflow: hidden;
 
             .toggle-btn {
                 position: absolute;
