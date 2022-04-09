@@ -1,6 +1,6 @@
 const { when, whenDev, whenProd, whenTest, ESLINT_MODES, POSTCSS_MODES } = require("@craco/craco");
 const CracoLessPlugin = require("craco-less");
-// 啊啊啊
+// mmm
 const path = require('path')
 
 module.exports = {
