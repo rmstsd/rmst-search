@@ -1,12 +1,11 @@
-
-import Search from "@/views/Search/Search";
+import Search from '@/views/Search/Search'
 
 function App() {
-    return (
-        <>
-            <Search />
-        </>
-    )
+  return (
+    <>
+      <Search />
+    </>
+  )
 }
 
 export default App
