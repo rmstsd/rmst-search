@@ -15,9 +15,9 @@ export const ajaxJSONP = (url: string) => {
 }
 
 /*
-    代码来自 clipboard.js
-    text 传入想复制的字符串
-    successCallBack 和 errorCallBack 可选 分别是复制成功与失败的回调
+  代码来自 clipboard.js
+  text 传入想复制的字符串
+  successCallBack 和 errorCallBack 可选 分别是复制成功与失败的回调
 */
 export function copy(text: string = '', successCallBack?: Function, errorCallBack?: Function) {
   const isRTL = document.documentElement.getAttribute('dir') === 'rtl'
