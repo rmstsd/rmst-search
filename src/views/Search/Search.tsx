@@ -9,8 +9,8 @@ import Icon_Map from './IconMap'
 
 import './Search.less'
 
-const context = require.context('./avatar', false)
-const imageArray: string[] = context.keys().map((path: string) => context(path).default)
+const modules = import.meta.glob('./avatar/*', { eager: true })
+const imageArray = Object.values(modules).map(o => (o as any).default)
 
 type ISearchType = 'mess' | 'engine'
 

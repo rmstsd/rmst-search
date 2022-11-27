@@ -1,9 +1,18 @@
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') clearTimeout(timer)
+})
+
+let timer
 export const openUrl = (url: string) => {
   let a: null | HTMLElement = document.createElement('a')
   a.setAttribute('target', '_blank')
   a.setAttribute('href', url)
   a.click()
   a = null
+
+  timer = setTimeout(() => {
+    window.close()
+  }, 2000)
 }
 
 export const ajaxJSONP = (url: string) => {
