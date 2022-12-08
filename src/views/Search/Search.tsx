@@ -23,7 +23,7 @@ function Search() {
   const [messList, setMessList] = useState(msl)
   const [engineList, setEngineList] = useState(egl)
   const [avatarIdx, setAvatarIdx] = useState(Number(localStorage.avatarIdx) || 0)
-
+  //
   useEffect(() => {
     const onMouseup = () => {
       const selectedText = window.getSelection().toString()
