@@ -31,6 +31,17 @@ function Search() {
     }
     document.addEventListener('mouseup', onMouseup)
 
+    let timer = null
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+        clearTimeout(timer)
+      } else {
+        timer = setTimeout(() => {
+          window.close()
+        }, 2000)
+      }
+    })
+
     return () => document.removeEventListener('mouseup', onMouseup)
   }, [])
 
