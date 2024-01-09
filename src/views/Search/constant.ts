@@ -38,6 +38,13 @@ export const messList: UMessItem[] = [
     value: ''
   },
   {
+    id: 'xiaohongshu',
+    mark: '小红书',
+    link: 'https://www.xiaohongshu.com/search_result?keyword=',
+    home: 'https://www.xiaohongshu.com',
+    value: ''
+  },
+  {
     id: 'npm',
     mark: 'npm',
     link: 'https://www.npmjs.com/search?q=',

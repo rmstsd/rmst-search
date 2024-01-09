@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Input, Button } from 'antd'
 import Icon from '@ant-design/icons'
+import clsx from 'clsx'
 
 import { messList as msl, engineList as defaultEgl, UEngineItem, UMessItem } from './constant'
 import { copy, openUrl } from '@/utils/utils'
@@ -123,19 +124,43 @@ function Search() {
     localStorage.avatarIdx = nv
   }
 
+  const refList = useRef<HTMLDivElement[]>([])
+  const originWidthRef = useRef(0)
+
   return (
     <div className="search-container">
       <section className="mess-container">
         {messList.map((item, idx) => (
           <div
-            className="mess-item"
+            className={clsx('mess-item')}
             key={idx}
+            ref={el => {
+              refList.current[idx] = el
+            }}
             // onContextMenu={evt => handleOnContextMenu(evt, item, idx, 'mess')}
           >
             <Input.Search
               value={item.value}
               tabIndex={engineList.length + idx + 1}
               spellCheck={false}
+              onFocus={() => {
+                const curDom = refList.current[idx]
+                const { width } = curDom.getBoundingClientRect()
+                originWidthRef.current = width
+                curDom.style.width = width + 'px'
+
+                requestAnimationFrame(() => {
+                  curDom.style.width = width + 100 + 'px'
+                })
+              }}
+              onBlur={() => {
+                const curDom = refList.current[idx]
+                curDom.style.width = originWidthRef.current + 'px'
+
+                setTimeout(() => {
+                  curDom.style.width = null
+                }, 300)
+              }}
               onChange={evt => messItemOnChange(evt.target.value, idx)}
               onSearch={(value, evt) => messSearch(value, idx, evt)}
               placeholder={item.mark}
